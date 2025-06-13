@@ -1,19 +1,36 @@
-# Car Ball
+# Car Ball.io
 
-This project is a small browser game. Open `index.html` in any modern web browser to start playing.
+This is a simple multiplayer browser game. The server is built with Node.js and Socket.io while the client is written in TypeScript.
 
-## How to Play
-1. Clone or download this repository.
-2. Locate the `index.html` file in the project root.
-3. Double–click `index.html` or open it via your browser's **File > Open** menu.
-4. The game should load immediately and you can play from the title screen.
+## Local Development
 
-## Development
-Development mainly happens inside `script.js` and `style.css`.
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Build the project
+   ```bash
+   npm run build
+   ```
+3. Start the server
+   ```bash
+   npm start
+   ```
+4. Open `http://localhost:3000` in two browser windows to test a match.
 
-1. Edit `script.js` to modify the game logic.
-2. Edit `style.css` to adjust visual styles.
-3. For testing changes, run a local HTTP server (for example with `python3 -m http.server`) and navigate to `http://localhost:8000` in your browser. This avoids issues with local file permissions.
-4. Refresh the browser to see your changes.
+## Deployment
 
-Have fun!
+The app can be deployed to Render using two services:
+
+- **static-site** – serves the compiled client in the `public` folder.
+- **web-service** – runs `node dist/server/server.js` and manages WebSocket connections.
+
+Set environment variables `REDIS_URL`, `PORT` and `NODE_ENV` on Render.
+
+## Testing
+
+Run unit tests with Jest:
+
+```bash
+npm test
+```
