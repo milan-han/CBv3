@@ -2,7 +2,14 @@ services:
   - type: web
     name: car-ball-server
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    plan: free
+    buildCommand: |
+      npm install
+    startCommand: node server.js
     envVars:
-      - fromGroup: cbv3-env
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: REDIS_URL
+        value: # optional, leave blank unless needed
