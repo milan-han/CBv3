@@ -8,8 +8,10 @@ services:
     envVars:
       - fromGroup: cbv3-env
 
-  - type: static
+  - type: web
     name: static-site
+    env: static
+    plan: free
     buildCommand: |
       npm install
       npm run build
