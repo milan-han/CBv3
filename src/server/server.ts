@@ -10,7 +10,9 @@ const io = new Server(httpServer, {
   },
 });
 
+// Serve the compiled client bundle alongside static assets
 app.use(express.static('public'));
+app.use('/dist', express.static('dist/client'));
 
 interface InputState {
   up: boolean;
